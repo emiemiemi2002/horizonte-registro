@@ -18,18 +18,28 @@
 <div class="sky">
   <header class="wrap brand">
     <img class="logo" src="assets/horizonte-navy.png" width="900" height="406" alt="HORIZONTE by PACS Computación">
-    <p class="tagline">Hoy celebramos lo construido.<br>Visualizamos el <b>horizonte</b> contigo.</p>
-    <hr class="rule">
-    <div class="details">
-      <span class="date">12 de noviembre de 2026</span>
-      <span class="place">Jardín del Real del Campanario<br>6:00 PM</span>
-    </div>
+    <dl class="facts-row">
+      <div class="fr-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="1.5"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/></svg>
+        <dt class="sr-only">Fecha</dt>
+        <dd><span class="sr-only">12 de noviembre de 2026</span><span aria-hidden="true">12 nov 2026</span></dd>
+      </div>
+      <div class="fr-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 21s-6.5-6.2-6.5-11A6.5 6.5 0 0 1 18.5 10c0 4.8-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/></svg>
+        <dt class="sr-only">Lugar</dt>
+        <dd>Jardín del Real del Campanario</dd>
+      </div>
+      <div class="fr-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>
+        <dt class="sr-only">Hora</dt>
+        <dd>6:00 PM</dd>
+      </div>
+    </dl>
   </header>
 
   <main class="wrap">
     <section class="card" aria-labelledby="titulo-form">
-      <h1 id="titulo-form">Confirma tu asistencia</h1>
-      <p class="sub">Registra tus datos para reservar tu lugar.</p>
+      <h1 id="titulo-form">Registra tus datos para confirmar tu asistencia</h1>
       <p class="demo" id="demo" hidden>Modo de prueba: la conexión con Google Sheets aún no está configurada y los registros no se guardan.</p>
 
       <form id="registro" novalidate>
@@ -54,22 +64,18 @@
           <p class="err" id="empresa-err" aria-live="polite"></p>
         </div>
 
-        <div class="field">
-          <label for="area">Área</label>
-          <select id="area" name="area" aria-describedby="area-err" required>
-            <option value="" selected disabled>Selecciona tu área</option>
-            <option>Dirección general</option>
-            <option>Ventas</option>
-            <option>Marketing</option>
-            <option>Compras</option>
-            <option>Tecnología / Sistemas</option>
-            <option>Administración y finanzas</option>
-            <option>Operaciones</option>
-            <option>Recursos humanos</option>
-            <option value="Otra">Otra</option>
-          </select>
+        <fieldset class="field areas" id="area" aria-describedby="area-hint area-err">
+          <legend>Área</legend>
+          <p class="hint" id="area-hint">Puedes elegir más de una.</p>
+          <div class="chips">
+            <label class="chip"><input type="checkbox" name="area" value="Dirección general"><span>Dirección general</span></label>
+            <label class="chip"><input type="checkbox" name="area" value="Compras"><span>Compras</span></label>
+            <label class="chip"><input type="checkbox" name="area" value="Tecnología / Sistemas"><span>Tecnología / Sistemas</span></label>
+            <label class="chip"><input type="checkbox" name="area" value="Administración y finanzas"><span>Administración y finanzas</span></label>
+            <label class="chip"><input type="checkbox" name="area" value="Otra" id="area-otra-check"><span>Otra</span></label>
+          </div>
           <p class="err" id="area-err" aria-live="polite"></p>
-        </div>
+        </fieldset>
 
         <div class="field" id="otra-wrap" hidden>
           <label for="area_otra">¿Cuál?</label>

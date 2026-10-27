@@ -21,11 +21,17 @@ function doPost(e) {
     const nombre = limpiar(d.nombre, 40);
     const apellido = limpiar(d.apellido, 40);
     const empresa = limpiar(d.empresa, 80);
-    const area = limpiar(d.area, 40);
-    const areaOtra = area === 'Otra' ? limpiar(d.area_otra, 60) : '';
+    // Área admite varias opciones: llega como lista (areas) o como texto separado por comas (area).
+    const lista = (Array.isArray(d.areas) ? d.areas : String(d.area || '').split(','))
+      .map(function (a) { return limpiar(a, 40); })
+      .filter(function (a, i, arr) { return a && arr.indexOf(a) === i; })
+      .slice(0, 10);
+    const area = lista.join(', ');
+    const tieneOtra = lista.indexOf('Otra') > -1;
+    const areaOtra = tieneOtra ? limpiar(d.area_otra, 60) : '';
     const origen = limpiar(d.origen, 80);
 
-    if (!nombre || !apellido || !empresa || !area || (area === 'Otra' && !areaOtra)) {
+    if (!nombre || !apellido || !empresa || !area || (tieneOtra && !areaOtra)) {
       return responder({ ok: false, error: 'faltan_datos' });
     }
 
@@ -98,7 +104,7 @@ function responder(obj) {
 // Ejecutar una vez desde el editor (botón ▶) para autorizar permisos y crear la hoja "Registros".
 function prueba() {
   const r = doPost({ postData: { contents: JSON.stringify({
-    nombre: 'Prueba', apellido: 'Sistema', empresa: 'PACS Computación', area: 'Tecnología / Sistemas', origen: 'editor'
+    nombre: 'Prueba', apellido: 'Sistema', empresa: 'PACS Computación', areas: ['Tecnología / Sistemas', 'Otra'], area_otra: 'Innovación', origen: 'editor'
   }) } });
   console.log(r.getContent());
 }

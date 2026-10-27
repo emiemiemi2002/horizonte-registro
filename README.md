@@ -2,7 +2,7 @@
 
 Sitio estático (HTML, CSS y JS sin dependencias) con dos pantallas:
 
-- `index.html`: formulario de registro (Nombre, Apellido, Empresa, Área).
+- `index.html`: formulario de registro (Nombre, Apellido, Empresa y Área, con selección múltiple y opción "Otra").
 - `confirmacion.html`: agradecimiento con nombre y empresa, fecha, lugar y hora, y botones para agregar el evento al calendario.
 
 Los registros se guardan en Google Sheets mediante un Apps Script publicado como aplicación web (`apps-script/Code.gs`).
@@ -46,6 +46,7 @@ Mientras `ENDPOINT` esté vacío, el sitio funciona en **modo de prueba** (muest
 
 Fecha de registro · Nombre · Apellido · Empresa · Área · Área (otra) · Posible duplicado · Origen
 
+- **Área** guarda todas las opciones elegidas separadas por comas; si se eligió "Otra", el texto escrito va en **Área (otra)**.
 - **Posible duplicado = Sí** cuando ya existe un registro con el mismo nombre, apellido y empresa (sin distinguir mayúsculas ni acentos). Se guarda igual para no perder información.
 - Los textos que empiezan con `=`, `+`, `-` o `@` se guardan como texto para evitar fórmulas inyectadas.
 - El formulario incluye un campo oculto anti-bots: si un robot lo llena, el envío se descarta.

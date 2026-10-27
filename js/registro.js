@@ -4,20 +4,34 @@
   var form = document.getElementById("registro");
   var btn = document.getElementById("enviar");
   var msg = document.getElementById("form-msg");
-  var area = document.getElementById("area");
+  var areaChecks = form.querySelectorAll('input[name="area"]');
+  var otraCheck = document.getElementById("area-otra-check");
   var otraWrap = document.getElementById("otra-wrap");
   var otra = document.getElementById("area_otra");
   var DEMO = !CFG.ENDPOINT;
 
   if (DEMO) document.getElementById("demo").hidden = false;
 
-  area.addEventListener("change", function () {
-    var esOtra = area.value === "Otra";
-    otraWrap.hidden = !esOtra;
-    otra.required = esOtra;
-    if (esOtra) otra.focus();
-    else setError("area_otra", "");
-    setError("area", "");
+  function areasSeleccionadas() {
+    return Array.prototype.filter.call(areaChecks, function (c) { return c.checked; })
+      .map(function (c) { return c.value; });
+  }
+
+  Array.prototype.forEach.call(areaChecks, function (c) {
+    c.addEventListener("change", function () {
+      setError("area", "");
+      if (c === otraCheck) {
+        otraWrap.hidden = !c.checked;
+        otra.required = c.checked;
+        if (c.checked) otra.focus();
+        else { otra.value = ""; setError("area_otra", ""); }
+      }
+    });
+  });
+
+  // Al corregir un campo, se retira su mensaje de error.
+  ["nombre", "apellido", "empresa", "area_otra"].forEach(function (id) {
+    document.getElementById(id).addEventListener("input", function () { setError(id, ""); });
   });
 
   // Limpia: espacios dobles, recorta, y pone mayúscula inicial si todo viene en minúsculas.
@@ -48,9 +62,12 @@
     if (!d.apellido) falla("apellido", "Escribe tu apellido.");
     else if (!LETRAS.test(d.apellido)) falla("apellido", "Usa solo letras.");
     if (!d.empresa) falla("empresa", "Escribe el nombre de tu empresa.");
-    if (!d.area) falla("area", "Selecciona tu área.");
-    else if (d.area === "Otra" && !d.area_otra) falla("area_otra", "Escribe el nombre de tu área.");
-    if (primero) document.getElementById(primero).focus();
+    if (!d.areas.length) falla("area", "Selecciona al menos un área.");
+    else if (d.areas.indexOf("Otra") > -1 && !d.area_otra) falla("area_otra", "Escribe el nombre de tu área.");
+    if (primero) {
+      var foco = primero === "area" ? areaChecks[0] : document.getElementById(primero);
+      foco.focus();
+    }
     return ok;
   }
 
@@ -81,11 +98,13 @@
       nombre: limpiar(form.nombre.value),
       apellido: limpiar(form.apellido.value),
       empresa: String(form.empresa.value || "").replace(/\s+/g, " ").trim(),
-      area: area.value,
-      area_otra: area.value === "Otra" ? limpiar(otra.value) : "",
+      areas: areasSeleccionadas(),
+      area: "",
+      area_otra: otraCheck.checked ? limpiar(otra.value) : "",
       website: form.website.value, // trampa anti-bots: debe ir vacío
       origen: location.host || "local"
     };
+    d.area = d.areas.join(", ");
     if (!validar(d)) return;
 
     btn.disabled = true;
