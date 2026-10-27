@@ -108,6 +108,7 @@ a { color: inherit; }
   text-align: left;
   color: var(--navy);
 }
+.facts-row .fr-item:nth-child(2) dd { text-align: center; }
 
 .card {
   margin-block: 22px 0;
