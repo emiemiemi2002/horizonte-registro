@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Asistencia confirmada · HORIZONTE by PACS Computación</title>
+  <meta name="theme-color" content="#13203F">
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/montserrat-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div class="night">
+  <header class="wrap brand">
+    <img class="logo" src="assets/horizonte-white.png" width="900" height="406" alt="HORIZONTE by PACS Computación">
+  </header>
+
+  <main class="wrap">
+    <section class="ok" aria-labelledby="gracias">
+      <div class="check" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#EBC977" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
+      </div>
+      <h1 id="gracias">¡Gracias!</h1>
+      <p class="msg" id="msg">Tu asistencia quedó confirmada.</p>
+      <p class="note">Nos dará mucho gusto recibirte para celebrar lo construido y mirar juntos hacia un nuevo horizonte.</p>
+    </section>
+
+    <dl class="facts">
+      <div class="fact">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="1.5"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/></svg>
+        <dt>Fecha</dt>
+        <dd>12 de noviembre de 2026</dd>
+      </div>
+      <div class="fact">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M12 21s-6.5-6.2-6.5-11A6.5 6.5 0 0 1 18.5 10c0 4.8-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/></svg>
+        <dt>Lugar</dt>
+        <dd>Jardín del Real del Campanario</dd>
+      </div>
+      <div class="fact">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>
+        <dt>Hora</dt>
+        <dd>6:00 PM</dd>
+      </div>
+    </dl>
+
+    <div class="actions">
+      <a class="ghost" id="gcal" href="#" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="1.5"/><path d="M3.5 9.5h17M12 12.5v5M9.5 15h5"/></svg>
+        Google Calendar
+      </a>
+      <a class="ghost" id="ics" href="#" download="horizonte-pacs.ics">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 4v11M7.5 10.5L12 15l4.5-4.5M5 19.5h14"/></svg>
+        Apple / Outlook
+      </a>
+      <a class="ghost" id="mapa" href="#" target="_blank" rel="noopener" hidden>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 21s-6.5-6.2-6.5-11A6.5 6.5 0 0 1 18.5 10c0 4.8-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/></svg>
+        Cómo llegar
+      </a>
+    </div>
+  </main>
+
+  <footer class="foot">
+    <img src="assets/pacs-vertical-white.png" width="463" height="600" alt="PACS Computación, desde 1991">
+    <p>Juntos, más lejos</p>
+    <span class="mini-rule" aria-hidden="true"></span>
+  </footer>
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/confirmacion.js"></script>
+</body>
+</html>

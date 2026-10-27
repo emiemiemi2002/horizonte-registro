@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>HORIZONTE by PACS Computación · Confirma tu asistencia</title>
+  <meta name="description" content="Confirma tu asistencia a HORIZONTE by PACS Computación · 12 de noviembre de 2026 · Jardín del Real del Campanario · 6:00 PM.">
+  <meta name="theme-color" content="#FDFAF3">
+  <meta name="robots" content="noindex">
+  <meta property="og:title" content="HORIZONTE by PACS Computación">
+  <meta property="og:description" content="Hoy celebramos lo construido. Visualizamos el horizonte contigo. Confirma tu asistencia.">
+  <meta property="og:image" content="assets/og.jpg">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/montserrat-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div class="sky">
+  <header class="wrap brand">
+    <img class="logo" src="assets/horizonte-navy.png" width="900" height="406" alt="HORIZONTE by PACS Computación">
+    <p class="tagline">Hoy celebramos lo construido.<br>Visualizamos el <b>horizonte</b> contigo.</p>
+    <hr class="rule">
+    <div class="details">
+      <span class="date">12 de noviembre de 2026</span>
+      <span class="place">Jardín del Real del Campanario<br>6:00 PM</span>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="card" aria-labelledby="titulo-form">
+      <h1 id="titulo-form">Confirma tu asistencia</h1>
+      <p class="sub">Registra tus datos para reservar tu lugar.</p>
+      <p class="demo" id="demo" hidden>Modo de prueba: la conexión con Google Sheets aún no está configurada y los registros no se guardan.</p>
+
+      <form id="registro" novalidate>
+        <div class="row">
+          <div class="field">
+            <label for="nombre">Nombre</label>
+            <input id="nombre" name="nombre" type="text" autocomplete="given-name" maxlength="40" placeholder="Ej. Jesús" aria-describedby="nombre-hint nombre-err" required>
+            <p class="hint" id="nombre-hint">Solo tu primer nombre.</p>
+            <p class="err" id="nombre-err" aria-live="polite"></p>
+          </div>
+          <div class="field">
+            <label for="apellido">Apellido</label>
+            <input id="apellido" name="apellido" type="text" autocomplete="family-name" maxlength="40" placeholder="Ej. Mijares" aria-describedby="apellido-hint apellido-err" required>
+            <p class="hint" id="apellido-hint">Solo tu primer apellido.</p>
+            <p class="err" id="apellido-err" aria-live="polite"></p>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="empresa">Empresa</label>
+          <input id="empresa" name="empresa" type="text" autocomplete="organization" maxlength="80" placeholder="Nombre de tu empresa" aria-describedby="empresa-err" required>
+          <p class="err" id="empresa-err" aria-live="polite"></p>
+        </div>
+
+        <div class="field">
+          <label for="area">Área</label>
+          <select id="area" name="area" aria-describedby="area-err" required>
+            <option value="" selected disabled>Selecciona tu área</option>
+            <option>Dirección general</option>
+            <option>Ventas</option>
+            <option>Marketing</option>
+            <option>Compras</option>
+            <option>Tecnología / Sistemas</option>
+            <option>Administración y finanzas</option>
+            <option>Operaciones</option>
+            <option>Recursos humanos</option>
+            <option value="Otra">Otra</option>
+          </select>
+          <p class="err" id="area-err" aria-live="polite"></p>
+        </div>
+
+        <div class="field" id="otra-wrap" hidden>
+          <label for="area_otra">¿Cuál?</label>
+          <input id="area_otra" name="area_otra" type="text" maxlength="60" placeholder="Escribe tu área" aria-describedby="area_otra-err">
+          <p class="err" id="area_otra-err" aria-live="polite"></p>
+        </div>
+
+        <div class="hp" aria-hidden="true">
+          <label for="website">No llenar este campo</label>
+          <input id="website" name="website" type="text" tabindex="-1" autocomplete="off">
+        </div>
+
+        <button class="btn" id="enviar" type="submit">Confirmar asistencia</button>
+        <p class="form-msg" id="form-msg" role="status" aria-live="polite"></p>
+        <p class="privacy">Tus datos se usan únicamente para la logística de este evento.</p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="shore">
+    <svg class="waves" viewBox="0 0 1440 170" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0 96 C 300 40 620 40 860 78 C 1100 116 1290 104 1440 60 L1440 170 L0 170 Z" fill="#1B2C55"/>
+      <path d="M0 120 C 260 70 560 76 820 108 C 1080 140 1280 128 1440 92 L1440 170 L0 170 Z" fill="#13203F"/>
+      <path d="M0 96 C 300 40 620 40 860 78 C 1100 116 1290 104 1440 60" fill="none" stroke="#D3A44A" stroke-width="1.6"/>
+      <path d="M0 120 C 260 70 560 76 820 108 C 1080 140 1280 128 1440 92" fill="none" stroke="#EBC977" stroke-width="1" opacity=".8"/>
+    </svg>
+    <div class="foot">
+      <img src="assets/pacs-vertical-white.png" width="463" height="600" alt="PACS Computación, desde 1991">
+      <p>Juntos, más lejos</p>
+      <span class="mini-rule" aria-hidden="true"></span>
+    </div>
+  </footer>
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/registro.js"></script>
+</body>
+</html>
